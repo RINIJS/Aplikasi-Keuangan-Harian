@@ -1,0 +1,28 @@
+SharedPreferences pada Aplikasi Mobile – Keuangan Harian: Pencatatan Pemasukan dan Pengeluaran
+Tugas P10 Pemrograman Mobile · Prodi STI · Universitas Muhammadiyah Kotabumi
+
+Nama  : [Nama lengkap]
+NIM   : [NIM]
+Kelas : [Kelas]
+Dosen : Ryan Aji Wijaya, S.Kom., M.M.S.I
+
+Keterangan:
+1. Masalah yang diselesaikan aplikasi:
+   Pengguna kesulitan mencatat pemasukan dan pengeluaran harian secara teratur serta mengetahui saldo yang tersisa. Aplikasi Keuangan Harian membantu mencatat transaksi dan menampilkan ringkasan keuangan.
+
+2. Data yang disimpan di SharedPreferences + alasannya:
+   Nama panggilan dan pengaturan tampil/sembunyikan saldo. Data tersebut merupakan preferensi pengguna, ukurannya kecil, dan perlu tetap tersimpan meskipun aplikasi ditutup.
+
+3. Data yang disimpan di database / tidak disimpan + alasannya:
+   Data transaksi berupa jenis transaksi, nominal, keterangan, dan waktu disimpan di SQLite karena merupakan data utama yang jumlahnya dapat terus bertambah dan perlu ditampilkan sebagai riwayat. Data sementara seperti isi kolom sebelum tombol Simpan ditekan tidak disimpan.
+
+4. Cara kerja: PrefsManager, apply(), dibaca di onResume():
+   PrefsManager mengelola proses membaca dan menyimpan preferensi. Saat pengguna menekan Simpan, perubahan disimpan menggunakan apply(). Ketika aplikasi kembali aktif, onResume() membaca ulang preferensi dan memperbarui tampilan.
+
+5. Bukti: setelah force stop pengaturan tetap ada:
+   Setelah nama panggilan diubah dan saldo disembunyikan, aplikasi di-force stop melalui menu Info Aplikasi. Saat dibuka kembali, nama panggilan tetap tersimpan dan saldo masih tersembunyi.
+
+Kode: [link repositori GitHub]
+
+Pertanyaan untuk penonton:
+Menurut kalian, mengapa riwayat pemasukan dan pengeluaran lebih tepat disimpan di database daripada SharedPreferences?
